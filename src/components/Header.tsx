@@ -126,7 +126,6 @@ function ResponsiveAppBar() {
               LOGO
             </Typography>
           </Box>
-
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -138,7 +137,6 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             {false ? (
               <>
