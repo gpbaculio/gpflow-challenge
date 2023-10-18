@@ -44,14 +44,16 @@ function App() {
           <Box mt={3}>
             <IncomeRangeForm />
           </Box>
-          <Box width="100%" display="flex" alignItems="end">
-            <Box
-              component={Button}
-              mt={3}
-              ml="auto"
-              variant="contained"
-              color="primary"
-            >
+          <Box
+            width="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <Box component={Button} mt={3} variant="contained" color="primary">
+              Previous
+            </Box>
+            <Box component={Button} mt={3} variant="contained" color="primary">
               Next
             </Box>
           </Box>
