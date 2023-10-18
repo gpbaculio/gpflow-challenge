@@ -3,9 +3,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface UserState {
   email: string | null;
   fullName: string | null;
+  wizardComplete: boolean;
 }
 
-const initialState: UserState = { email: null, fullName: null };
+const initialState: UserState = {
+  email: null,
+  fullName: null,
+  wizardComplete: false,
+};
 
 const userSlice = createSlice({
   name: "user",
@@ -19,6 +24,12 @@ const userSlice = createSlice({
     },
     setEmail(state, action: PayloadAction<{ email: UserState["email"] }>) {
       state.email = action.payload.email;
+    },
+    setWizardComplete(
+      state,
+      action: PayloadAction<{ wizardComplete: UserState["wizardComplete"] }>
+    ) {
+      state.wizardComplete = action.payload.wizardComplete;
     },
   },
 });
