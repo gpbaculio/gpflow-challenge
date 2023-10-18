@@ -37,9 +37,7 @@ function App() {
               <StepLabel>Select Experience Level</StepLabel>
             </Step>
           </Stepper>
-          <Box mt={3}>
-            <IncomeRangeForm />
-          </Box>
+          <Box mt={3}>{currentStep === 0 ? <IncomeRangeForm /> : null}</Box>
           <Box
             width="100%"
             display="flex"
