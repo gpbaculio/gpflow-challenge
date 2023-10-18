@@ -15,11 +15,7 @@ import { useState } from "react";
 import IncomeRangeForm from "./components/IncomeRangeForm";
 
 function App() {
-  const [income, setIncome] = useState("");
-
-  const handleChange = (event: any) => {
-    setIncome(event.target.value);
-  };
+  const [currentStep, setCurrentStep] = useState(0);
 
   return (
     <Box
@@ -30,7 +26,7 @@ function App() {
     >
       <Container maxWidth="sm">
         <Box width="100%" component={Paper} elevation={3} p={3}>
-          <Stepper alternativeLabel>
+          <Stepper alternativeLabel activeStep={currentStep}>
             <Step>
               <StepLabel>Select Income Range</StepLabel>
             </Step>
@@ -50,10 +46,23 @@ function App() {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Box component={Button} mt={3} variant="contained" color="primary">
-              Previous
-            </Box>
-            <Box component={Button} mt={3} variant="contained" color="primary">
+            {currentStep ? (
+              <Box
+                component={Button}
+                mt={3}
+                variant="contained"
+                color="primary"
+              >
+                Previous
+              </Box>
+            ) : null}
+            <Box
+              ml="auto"
+              component={Button}
+              mt={3}
+              variant="contained"
+              color="primary"
+            >
               Next
             </Box>
           </Box>
