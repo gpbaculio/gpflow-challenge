@@ -8,15 +8,24 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Badge } from "@mui/material";
+import { Badge, Button } from "@mui/material";
+import {
+  Link as RouterLink,
+  LinkProps as RouterLinkProps,
+  MemoryRouter,
+} from "react-router-dom";
 
 const pages = ["Home"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
+const LinkBehavior = React.forwardRef<any, Omit<RouterLinkProps, "to">>(
+  (props, ref) => <RouterLink ref={ref} to="/login" {...props} />
+);
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -178,8 +187,23 @@ function ResponsiveAppBar() {
               </>
             ) : (
               <>
-                <Button color="inherit">Login</Button>
-                <Button color="inherit">Signup</Button>
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  component={RouterLink}
+                  to="/login"
+                >
+                  Login
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  component={RouterLink}
+                  to="/signup"
+                  sx={{ ml: 1 }}
+                >
+                  Sign up
+                </Button>
               </>
             )}
           </Box>

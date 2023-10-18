@@ -6,6 +6,8 @@ import { useState } from "react";
 import ResponsiveAppBar from "./components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./routes/Home";
+import Signup from "./routes/Signup";
+import Login from "./routes/Login";
 
 function App() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -16,6 +18,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
     </BrowserRouter>
