@@ -1,0 +1,154 @@
+# @generated
+# run `npm run print-schema` to re-generate this file.
+
+type Query {
+  viewer: Viewer
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Viewer implements Node {
+  """The ID of an object"""
+  id: ID!
+  fullName: String
+  image: String
+  email: String
+  createdAt: String
+  updatedAt: String
+  products(
+    """Returns the items in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the first n items from the list."""
+    first: Int
+
+    """Returns the items in the list that come before the specified cursor."""
+    before: String
+
+    """Returns the last n items from the list."""
+    last: Int
+  ): ProductConnection
+  orders(
+    """Returns the items in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the first n items from the list."""
+    first: Int
+
+    """Returns the items in the list that come before the specified cursor."""
+    before: String
+
+    """Returns the last n items from the list."""
+    last: Int
+  ): OrderConnection
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""A connection to a list of items."""
+type ProductConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ProductEdge]
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""An edge in a connection."""
+type ProductEdge {
+  """The item at the end of the edge"""
+  node: Product
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type Product implements Node {
+  """The ID of an object"""
+  id: ID!
+  productName: String
+  price: String
+  description: String
+  image: String
+}
+
+"""A connection to a list of items."""
+type OrderConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [OrderEdge]
+}
+
+"""An edge in a connection."""
+type OrderEdge {
+  """The item at the end of the edge"""
+  node: Order
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type Order implements Node {
+  """The ID of an object"""
+  id: ID!
+  productIds: [String]
+  status: String
+  createdAt: String
+  updatedAt: String
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): CreateUserPayload
+  loginUser(input: UserLoginInput!): UserLoginPayload
+}
+
+type CreateUserPayload {
+  token: String
+  error: String
+  clientMutationId: String
+}
+
+input CreateUserInput {
+  fullName: String!
+  email: String!
+  password: String!
+  image: String!
+  clientMutationId: String
+}
+
+type UserLoginPayload {
+  token: String
+  error: String
+  clientMutationId: String
+}
+
+input UserLoginInput {
+  email: String!
+  password: String!
+  clientMutationId: String
+}
