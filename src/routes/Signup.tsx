@@ -46,6 +46,7 @@ function Signup() {
     // Here you can handle the Facebook login
     console.log("Facebook login");
   };
+
   return (
     <Box
       display="flex"
