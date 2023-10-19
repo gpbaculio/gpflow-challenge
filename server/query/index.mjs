@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client";
 
 import ViewerType from "./ViewerType.mjs";
 
-import { nodeField } from "./types/definitions.mjs";
+import { nodeField } from "./definitions.mjs";
 
 export const prisma = new PrismaClient();
 
@@ -13,9 +13,7 @@ const query = new GraphQLObjectType({
   fields: () => ({
     viewer: {
       type: ViewerType,
-      resolve: (_root, _args, { user }) => {
-        return user;
-      },
+      resolve: (_root, _args, { user }) => user,
     },
     node: nodeField,
   }),
