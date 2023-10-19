@@ -101,7 +101,7 @@ function Login() {
             <Button component={RouterLink} to="/signup">
               {"Don't have an account? Sign Up"}
             </Button>
-            <Divider sx={{ my: 2 }}>
+            <Divider sx={{ my: 2, width: "100%" }}>
               <Typography variant="body1" color="textSecondary">
                 OR
               </Typography>
