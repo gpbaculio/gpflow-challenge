@@ -10,12 +10,11 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Link as RouterLink } from "react-router-dom";
-import { blue } from "@mui/material/colors";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { LoginSocialFacebook } from "reactjs-social-login";
+import jwtDecode from "jwt-decode";
+import { GoogleLogin } from "@react-oauth/google";
 
 const schema = yup.object().shape({
   email: yup.string().email("Email is not valid").required("Email is required"),
@@ -37,6 +36,14 @@ function Login() {
   } = useForm<LoginData>({
     resolver: yupResolver(schema),
   });
+
+  const onLoginStart = () => {
+    alert("login start");
+  };
+
+  const onLogoutSuccess = () => {
+    alert("logout success");
+  };
 
   const onSubmit = (data: LoginData) => {
     console.log(data);
@@ -107,16 +114,14 @@ function Login() {
                 OR
               </Typography>
             </Divider>
-            {/* <LoginSocialFacebook> */}
-            <Button
-              variant="contained"
-              style={{ backgroundColor: blue[500], color: "white" }}
-              startIcon={<FacebookIcon />}
-              fullWidth
-            >
-              Continue with Facebook
-            </Button>
-            {/* </LoginSocialFacebook> */}
+            <GoogleLogin
+              onSuccess={(credentialResponse) => {
+                console.log(jwtDecode(`${credentialResponse.credential}`));
+              }}
+              onError={() => {
+                console.log("Login Failed");
+              }}
+            />
           </Box>
         </Paper>
       </Container>
