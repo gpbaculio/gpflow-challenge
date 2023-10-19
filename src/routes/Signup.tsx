@@ -3,13 +3,13 @@ import {
   Container,
   Paper,
   Button,
-  Link,
   TextField,
   Typography,
   Avatar,
   Grid,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { Link as RouterLink } from "react-router-dom";
 
 function Login() {
   return (
@@ -76,13 +76,9 @@ function Login() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
+            <Button component={RouterLink} to="/login">
+              {"Already have an account? Sign in"}
+            </Button>
           </Box>
         </Box>
       </Container>

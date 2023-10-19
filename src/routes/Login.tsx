@@ -9,7 +9,7 @@ import {
   Avatar,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-
+import { Link as RouterLink } from "react-router-dom";
 function Login() {
   return (
     <Box
@@ -68,9 +68,9 @@ function Login() {
             >
               Sign In
             </Button>
-            <Link href="#" variant="body2">
+            <Button component={RouterLink} to="/signup">
               {"Don't have an account? Sign Up"}
-            </Link>
+            </Button>
           </Box>
         </Box>
       </Container>
