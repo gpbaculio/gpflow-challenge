@@ -7,11 +7,18 @@ import {
   Typography,
   Avatar,
   Grid,
+  Divider,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Link as RouterLink } from "react-router-dom";
+import { blue } from "@mui/material/colors";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
-function Login() {
+function Signup() {
+  const handleFacebookLogin = () => {
+    // Here you can handle the Facebook login
+    console.log("Facebook login");
+  };
   return (
     <Box
       display="flex"
@@ -79,6 +86,21 @@ function Login() {
             <Button component={RouterLink} to="/login">
               {"Already have an account? Sign in"}
             </Button>
+
+            <Divider sx={{ my: 2 }}>
+              <Typography variant="body1" color="textSecondary">
+                OR
+              </Typography>
+            </Divider>
+            <Button
+              variant="contained"
+              style={{ backgroundColor: blue[500], color: "white" }}
+              startIcon={<FacebookIcon />}
+              fullWidth
+              onClick={handleFacebookLogin}
+            >
+              Continue with Facebook
+            </Button>
           </Box>
         </Box>
       </Container>
@@ -86,4 +108,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
