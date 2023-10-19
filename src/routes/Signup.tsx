@@ -24,6 +24,10 @@ const schema = yup.object().shape({
     .string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password")], "Passwords must match")
+    .required("Confirm Password is required"),
 });
 
 function Signup() {
@@ -106,6 +110,19 @@ function Signup() {
                     {...register("password")}
                     error={!!errors.password}
                     helperText={errors.password?.message}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+                    required
+                    fullWidth
+                    label="Confirm Password"
+                    type="password"
+                    id="confirmPassword"
+                    {...register("confirmPassword")}
+                    error={!!errors.confirmPassword}
+                    helperText={errors.confirmPassword?.message}
                   />
                 </Grid>
               </Grid>
