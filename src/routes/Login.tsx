@@ -13,8 +13,9 @@ import { Link as RouterLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import jwtDecode from "jwt-decode";
-import { GoogleLogin } from "@react-oauth/google";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+import { blue } from "@mui/material/colors";
 
 const schema = yup.object().shape({
   email: yup.string().email("Email is not valid").required("Email is required"),
@@ -114,13 +115,24 @@ function Login() {
                 OR
               </Typography>
             </Divider>
-            <GoogleLogin
-              onSuccess={(credentialResponse) => {
-                console.log(jwtDecode(`${credentialResponse.credential}`));
+            <FacebookLogin
+              appId={`${process.env.REACT_APP_FB_APP_ID}`}
+              callback={(res) => {
+                console.log("FacebookLogin res ", res);
               }}
-              onError={() => {
-                console.log("Login Failed");
-              }}
+              fields="name,email,picture"
+              scope="public_profile"
+              render={(renderProps) => (
+                <Button
+                  variant="contained"
+                  style={{ backgroundColor: blue[500], color: "white" }}
+                  startIcon={<FacebookIcon />}
+                  fullWidth
+                  onClick={renderProps.onClick}
+                >
+                  Continue with Facebook
+                </Button>
+              )}
             />
           </Box>
         </Paper>
