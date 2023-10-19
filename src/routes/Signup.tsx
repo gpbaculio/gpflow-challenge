@@ -47,98 +47,97 @@ function Signup() {
       minHeight="100vh"
     >
       <Container maxWidth="xs">
-        <Box
-          width="100%"
-          alignItems="center"
-          component={Paper}
-          elevation={3}
-          p={3}
-          display="flex"
-          flexDirection="column"
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
+        <Paper elevation={3}>
           <Box
-            component="form"
-            noValidate
-            sx={{ mt: 3 }}
-            onSubmit={handleSubmit((data) => {
-              console.log(data);
-            })}
+            p={3}
+            alignItems="center"
+            justifyContent="center"
+            display="flex"
+            flexDirection="column"
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
-                  fullWidth
-                  id="fullName"
-                  label="Full Name"
-                  {...register("fullName")}
-                  error={!!errors.fullName}
-                  helperText={errors.fullName?.message}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  autoComplete="email"
-                  {...register("email")}
-                  error={!!errors.email}
-                  helperText={errors.email?.message}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
-                  required
-                  fullWidth
-                  label="Password"
-                  type="password"
-                  id="password"
-                  {...register("password")}
-                  error={!!errors.password}
-                  helperText={errors.password?.message}
-                />
-              </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign up
+            </Typography>
+            <Box
+              component="form"
+              noValidate
+              sx={{ mt: 3 }}
+              onSubmit={handleSubmit((data) => {
+                console.log(data);
+              })}
             >
-              Sign Up
-            </Button>
-            <Button component={RouterLink} to="/login">
-              {"Already have an account? Sign in"}
-            </Button>
-
-            <Divider sx={{ my: 2 }}>
-              <Typography variant="body1" color="textSecondary">
-                OR
-              </Typography>
-            </Divider>
-            <Button
-              variant="contained"
-              style={{ backgroundColor: blue[500], color: "white" }}
-              startIcon={<FacebookIcon />}
-              fullWidth
-              onClick={handleFacebookLogin}
-            >
-              Continue with Facebook
-            </Button>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+                    fullWidth
+                    id="fullName"
+                    label="Full Name"
+                    {...register("fullName")}
+                    error={!!errors.fullName}
+                    helperText={errors.fullName?.message}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    autoComplete="email"
+                    {...register("email")}
+                    error={!!errors.email}
+                    helperText={errors.email?.message}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+                    required
+                    fullWidth
+                    label="Password"
+                    type="password"
+                    id="password"
+                    {...register("password")}
+                    error={!!errors.password}
+                    helperText={errors.password?.message}
+                  />
+                </Grid>
+              </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign Up
+              </Button>
+              <Button component={RouterLink} to="/login">
+                {"Already have an account? Sign in"}
+              </Button>
+              <Divider sx={{ my: 2 }}>
+                <Typography variant="body1" color="textSecondary">
+                  OR
+                </Typography>
+              </Divider>
+              <Button
+                variant="contained"
+                style={{ backgroundColor: blue[500], color: "white" }}
+                startIcon={<FacebookIcon />}
+                fullWidth
+                onClick={handleFacebookLogin}
+              >
+                Continue with Facebook
+              </Button>
+            </Box>
           </Box>
-        </Box>
+        </Paper>
       </Container>
     </Box>
   );
