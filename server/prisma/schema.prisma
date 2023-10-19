@@ -9,3 +9,31 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Order {
+  id         String   @id @default(cuid())
+  productIds String[]
+  status     String   @default("pending")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model User {
+  id        String   @id @default(cuid())
+  fullName  String?
+  email     String?  @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orderIds  String[]
+  type      String   @default("customer") // can be admin
+  image     String?
+  password  String
+}
+
+model Product {
+  id          String @id @default(cuid())
+  productName String
+  price       String
+  description String
+  image       String
+}

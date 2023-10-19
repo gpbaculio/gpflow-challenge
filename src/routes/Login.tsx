@@ -15,6 +15,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { LoginSocialFacebook } from "reactjs-social-login";
 
 const schema = yup.object().shape({
   email: yup.string().email("Email is not valid").required("Email is required"),
@@ -106,15 +107,16 @@ function Login() {
                 OR
               </Typography>
             </Divider>
+            {/* <LoginSocialFacebook> */}
             <Button
               variant="contained"
               style={{ backgroundColor: blue[500], color: "white" }}
               startIcon={<FacebookIcon />}
               fullWidth
-              onClick={() => {}}
             >
               Continue with Facebook
             </Button>
+            {/* </LoginSocialFacebook> */}
           </Box>
         </Paper>
       </Container>
